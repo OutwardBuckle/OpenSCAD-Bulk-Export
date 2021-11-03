@@ -2,7 +2,7 @@
 
 Bulk export via OpenSCAD command line and PowerShell
 
-I've included a very basic SCAD and CSV file so you can see how they work. The scripts are labelled so you can see what they are doing and understand them without any PowerShell experience
+I've included a very basic SCAD and CSV file so you can see how they work
 
 The script will:
 
