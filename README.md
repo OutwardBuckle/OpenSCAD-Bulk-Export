@@ -4,7 +4,7 @@ Bulk export via OpenSCAD command line and PowerShell
 
 I've included a very basic SCAD and CSV file so you can see how they work
 
-The script will:
+To run, download the ps1 file, right click it and select Run With PowerShell. It will:
 
 1. Prompt you for 
     - a .CSV file
