@@ -1,4 +1,4 @@
-# OpenSCAD-Bulk-Export
+# OpenSCAD Bulk Export PowerShell Script
 
 Bulk export via OpenSCAD command line and PowerShell
 
