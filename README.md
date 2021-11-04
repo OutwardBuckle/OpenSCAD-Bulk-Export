@@ -1,6 +1,6 @@
 # Bulk export via OpenSCAD command line & PowerShell
 
-Download the .ps1 file, right click it and select Run With PowerShell. It will:
+Download OpenSCAD_Bulk_Export_0-AIO.ps1 file, right click it and select Run With PowerShell. It will:
 
 1. Prompt you for 
     - a .CSV file
@@ -8,6 +8,8 @@ Download the .ps1 file, right click it and select Run With PowerShell. It will:
     - The output folder for the STLs
 2. Create a JSON file full of parameter sets for each line in the csv
 3. Export each set as an STL file
+
+I've also included two extra files if you only want to go from CSV to JSON or from JSON to STL.
 
 The CSV file only requires one field (exported_filename), all other fields should relate to values in the .SCAD script. Any varibles that are not specified in the CSV will use the default values from the SCAD file.
 
