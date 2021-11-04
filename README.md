@@ -13,15 +13,17 @@ I've also included two extra files if you only want to go from CSV to JSON or fr
 
 The CSV file only requires one field (exported_filename), all other fields should relate to values in the .SCAD script. Any varibles that are not specified in the CSV will use the default values from the SCAD file.
 
+-----
+
 _Example .SCAD File:_
 
-    message = "X";
-    textsize = 20;
+    message = "Some Text";
     myfont = "Stencil";
+    textsize = 20;
     height = 10;
 
     linear_extrude(height){
-        text(message, font=myfont,size=textsize);
+        text(message, font=myfont, size=textsize);
     }
 
 _Example .CSV File_
@@ -31,6 +33,12 @@ _Example .CSV File_
 | Hi-cali           | Hi        | Calibri |
 | Hello-cali        | Hello     | Calibri |
 | Howdy-Stencil     | Howdy     | Stencil |
+
+_Example Output_
+
+![](https://github.com/OutwardBuckle/OpenSCAD-Bulk-Export/blob/main/img/eg.png?raw=true)
+
+-----
 
 Quick notes:
 * OpenSCAD needs the JSON file to have the same filename as the .SCAD file, or it will export the STLs with default parameters (e.g. File_Name.SCAD & File_Name.JSON)
