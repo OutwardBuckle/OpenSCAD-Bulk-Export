@@ -9,32 +9,32 @@ If ($cam_args -eq ''){
 
     cls
     Write-Host "Default Camera Settings
-        Leave Blank
+    Leave Blank
 
-    Specific Camera Location ( translate_x,y,z, rot_x,y,z, dist)
-        --camera 0,0,0,120,0,50,140
+Specific Camera Location ( translate_x,y,z, rot_x,y,z, dist)
+    --camera 0,0,0,120,0,50,140
 
-    Auto-center
-        --autocenter
+Auto-center
+    --autocenter
 
-    View All
-        --viewall
- 
-    Color Scheme
-        --colorscheme DeepOcean
+View All
+    --viewall
 
-    User Render Quality
-        --render
+Color Scheme
+    --colorscheme DeepOcean
 
-    Set Image Export Size
-        --imgsize 100,100
+User Render Quality
+    --render
+
+Set Image Export Size
+    --imgsize 100,100
 
 
 
-    Example - Top Down, View All, Deep Ocean Color Scheme
-        --camera 0,0,0,0,0,0,0 --viewall --colorscheme DeepOcean'
-    
-    "
+Example - Top Down, View All, Deep Ocean Color Scheme
+    --camera 0,0,0,0,0,0,0 --viewall --colorscheme DeepOcean'
+
+"
 
     $cam_args = Read-Host -Prompt 'Input the camera arguments then press enter'
 
