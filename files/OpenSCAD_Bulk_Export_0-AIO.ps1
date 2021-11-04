@@ -55,7 +55,6 @@ if(Test-Path -Path "C:\Program Files\OpenSCAD\openscad.exe"){
 ##################
 
 $JsonPath = (Get-ItemProperty $scadPath).DirectoryName + '\' + [System.IO.Path]::GetFileNameWithoutExtension($scadPath) + ".json"
-$backupJsonPath = (Get-ItemProperty $scadPath).DirectoryName + '\' + (Get-Date -Format 'yyMMdd-hhmm') + '-' + [System.IO.Path]::GetFileNameWithoutExtension($scadPath) + ".json"
 
 if(Test-Path -Path $JsonPath){
     cls
