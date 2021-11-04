@@ -48,8 +48,9 @@ File Descriptions
 | -----------------|:------------------------------------------------------------------------------------------:|
 | 00-AIO           | Create a JSON file from CSV, then exports each set to STL                                  |
 | 01-CSV-to-JSON   | Creates a parameter set JSON file from a CSV file                                          |
-| 02-JSON-to-STL   | Exports all STLs from a parameter set JSON file                                            |
+| 02-JSON-to-STL   | Exports all a parameter sets from a JSON file to STL                                       |
 | 03-SCAD-to-CSV   | Generates a CSV from a SCAD file (currently requires the latest dev build of OpenSCAD)     |
+| 04-JSON-to-PNG   | Exports all a parameter sets from a JSON file to PNG                                       |
 
 Notes
 -----
