@@ -1,5 +1,16 @@
 # Bulk export via OpenSCAD command line & PowerShell
 
+File Descriptions
+-----
+
+| Name             | Description                                                                                |
+| -----------------|:------------------------------------------------------------------------------------------:|
+| 00-All-In-One    | Create a JSON file from CSV, then exports each set to STL                                  |
+| 01-CSV-to-JSON   | Creates a parameter set JSON file from a CSV file                                          |
+| 02-JSON-to-STL   | Exports all a parameter sets from a JSON file to STL                                       |
+| 03-JSON-to-PNG   | Exports all a parameter sets from a JSON file to PNG                                       |
+| 04-SCAD-to-CSV   | Generates a CSV from a SCAD file (currently requires the latest dev build of OpenSCAD)     |
+
 Quick Instructions
 -----
 
@@ -40,17 +51,6 @@ _Example Output_
 ![](https://github.com/OutwardBuckle/OpenSCAD-Bulk-Export/blob/main/img/eg.png?raw=true)
 
 -----
-
-File Descriptions
------
-
-| Name             | Description                                                                                |
-| -----------------|:------------------------------------------------------------------------------------------:|
-| 00-All-In-One    | Create a JSON file from CSV, then exports each set to STL                                  |
-| 01-CSV-to-JSON   | Creates a parameter set JSON file from a CSV file                                          |
-| 02-JSON-to-STL   | Exports all a parameter sets from a JSON file to STL                                       |
-| 03-JSON-to-PNG   | Exports all a parameter sets from a JSON file to PNG                                       |
-| 04-SCAD-to-CSV   | Generates a CSV from a SCAD file (currently requires the latest dev build of OpenSCAD)     |
 
 Notes
 -----
