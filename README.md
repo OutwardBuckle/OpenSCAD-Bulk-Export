@@ -11,6 +11,8 @@ Download OpenSCAD_Bulk_Export_0-AIO.ps1 file, right click it and select Run With
 
 I've also included two extra files if you only want to go from CSV to JSON or from JSON to STL.
 
+Update: Added another to generate a CSV from a SCAD file, currently requires the latest dev build of OpenSCAD.
+
 The CSV file only requires one field (exported_filename), all other fields should relate to values in the .SCAD script. Any varibles that are not specified in the CSV will use the default values from the SCAD file.
 
 -----
