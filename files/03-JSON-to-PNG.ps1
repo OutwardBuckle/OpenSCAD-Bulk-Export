@@ -32,7 +32,7 @@ Set Image Export Size
 
 
 Example - Top Down, View All, Deep Ocean Color Scheme
-    --camera 0,0,0,0,0,0,0 --viewall --colorscheme DeepOcean'
+    --camera 0,0,0,0,0,0,0 --viewall --colorscheme DeepOcean
 
 "
 
