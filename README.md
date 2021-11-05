@@ -48,7 +48,8 @@ _Example .CSV File_
 
 _Example Output_
 
-![](https://github.com/OutwardBuckle/OpenSCAD-Bulk-Export/blob/main/img/eg.png?raw=true)
+![image](https://user-images.githubusercontent.com/50000826/140439376-16148446-163c-4ac3-9986-237b54ac9945.png)
+
 
 -----
 
