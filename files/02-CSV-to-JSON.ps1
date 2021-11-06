@@ -1,4 +1,4 @@
-﻿### You will be prompted for these values if not set here
+### You will be prompted for these values if not set here
 $csvPath = ""
 $scadPath = ""
 
