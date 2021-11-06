@@ -3,28 +3,32 @@
 File Descriptions
 -----
 
-| Name             | Description                                                                                |
-| -----------------|:------------------------------------------------------------------------------------------:|
-| 00-All-In-One    | Create a JSON file from CSV, then exports each set to STL                                  |
-| 01-CSV-to-JSON   | Creates a parameter set JSON file from a CSV file                                          |
-| 02-JSON-to-STL   | Exports all a parameter sets from a JSON file to STL                                       |
-| 03-JSON-to-PNG   | Exports all a parameter sets from a JSON file to PNG                                       |
-| 04-SCAD-to-CSV   | Generates a CSV from a SCAD file (currently requires the latest dev build of OpenSCAD)     |
+| Name             | Description                                                                            |
+| -----------------|:--------------------------------------------------------------------------------------:|
+| 01-CSV-to-EXPORT | Create a JSON file from CSV, then exports each set                                     |
+| 02-CSV-to-JSON   | Creates a parameter set JSON file from a CSV file                                      |
+| 03-JSON-to-EXPORT| Exports all a parameter sets from a JSON file                                          |
+| 04-SCAD-to-CSV   | Generates a CSV from a SCAD file (currently requires the latest dev build of OpenSCAD) |
+
+Export formats: STL, OFF, AMF, 3MF, DXF, SVG, PNG
 
 Quick Instructions
 -----
 
-Download 00-All-In-One.ps1 from the files directory, right click it and select Run With PowerShell. It will:
+Download 01-CSV-to-EXPORT.ps1 from the files directory, right click it and select Run With PowerShell. It will:
 
 1. Prompt you for 
     - a .CSV file
     - a .SCAD file
-    - The output folder for the STLs (note: the prompt sometimes hides behind programs)
+    - The output folder for the exported files (note: the prompt sometimes hides behind programs)
+    - The exported file format
+    - If you've selected PNG, it will also prompt for camera arguments
 2. Create a JSON file full of parameter sets for each line in the csv
-3. Export each set as an STL file
+3. Export each item
 
 The CSV file only requires one field (exported_filename), all other fields should relate to values in the .SCAD script. Any varibles that are not specified in the CSV will use the default values from the SCAD file.
 
+CSV Format
 -----
 
 _Example .SCAD File:_
