@@ -1,4 +1,4 @@
-﻿### You will be prompted for these values if not set here
+### You will be prompted for these values if not set here
 $csvPath = "" ### Path to the CSV file
 $scadPath = "" ### Path to the .SCAD file
 $OutputFolder = "" ### Path of output folder
@@ -197,20 +197,9 @@ If(Test-Path -Path $JsonPath){
         }
 
         ## Write Host
-        cls
-        write-host "
-    
-    
+        #write-host ("Export Path " + $OutputPath)
 
-
-
-    
-        "
-        write-host ("Exporting " + $Output_Filename)
-        write-host ("Export Path " + $OutputPath)
-        write-host "$current_count of $totalItemCount"
-
-        Write-Progress -Activity "Exporting" -Status "Progress:" -PercentComplete ($current_count/$totalItemCount*100)
+        Write-Progress -Activity ("Exporting " + $Output_Filename) -Status ("Progress: " + $current_count + " of " + $totalItemCount) -PercentComplete ($current_count/$totalItemCount*100)
 
         ## Check if item exists, if not
         if (-not(Test-Path -Path $OutputPath)) {
