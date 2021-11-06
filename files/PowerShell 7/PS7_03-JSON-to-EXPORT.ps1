@@ -1,6 +1,6 @@
 ﻿### You will be prompted for these values if not set here
-$scadPath = "D:\Storage\3D Printing\Thingiverse_Uploads\OpenSCAD Bulk Scripts\GitHub\files\Example.scad" ### Path to the .SCAD file
-$OutputFolder = "D:\Storage\3D Printing\Thingiverse_Uploads\OpenSCAD Bulk Scripts\GitHub\files\output" ### Path of output folder
+$scadPath = "" ### Path to the .SCAD file
+$OutputFolder = "" ### Path of output folder
 $file_extension = "" ### "STL", "OFF", "AMF", "3MF", "DXF", "SVG", "PNG"
 $cam_args = "" ### Only needed if using PNG export
 $process_count = 3
