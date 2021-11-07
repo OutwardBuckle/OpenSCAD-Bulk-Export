@@ -5,12 +5,10 @@ File Descriptions
 
 | Name             | Description                                                                            |
 | -----------------|:--------------------------------------------------------------------------------------:|
-| 01-CSV-to-EXPORT | Create a JSON file from CSV, then exports each set                                     |
-| 02-CSV-to-JSON   | Creates a parameter set JSON file from a CSV file                                      |
-| 03-JSON-to-EXPORT| Exports all a parameter sets from a JSON file                                          |
-| 04-SCAD-to-CSV   | Generates a CSV from a SCAD file (currently requires the latest dev build of OpenSCAD) |
-
-Export formats: STL, OFF, AMF, 3MF, DXF, SVG, PNG
+| 01-CSV-to-EXPORT | Import a CSV file and export each item (to STL, OFF, AMF, 3MF, DXF, SVG or PNG)        |
+| 02-CSV-to-JSON   | Create  a customizer parameter set JSON file from a CSV file                           |
+| 03-JSON-to-EXPORT| Export all a parameter sets from a JSON file                                           |
+| 04-SCAD-to-CSV   | Generate a CSV from a SCAD file (currently requires the latest dev build of OpenSCAD)  |
 
 Quick Instructions
 -----
