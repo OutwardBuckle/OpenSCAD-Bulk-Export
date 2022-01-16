@@ -35,7 +35,7 @@ if($IsWindows){
     If ($scadPath -eq ''){
 
         Clear-Host
-        Write-Outpute-Output "You will now be prompted for the SCAD file"
+        Write-Output "You will now be prompted for the SCAD file"
         pause
 
         $FileBrowser.filter = "scad (*.scad)| *.scad"
