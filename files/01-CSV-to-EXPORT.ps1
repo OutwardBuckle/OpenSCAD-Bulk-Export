@@ -9,7 +9,7 @@ $process_count = 3
 ################ START OF SCRIPT
 function pause{ $null = Read-Host 'Press Enter to continue...' }
 
-if($IsWindows){
+if($IsWindows -or ((Get-Host | Select-Object Version).Version.Major -lt 7) ){
 
     Add-Type -AssemblyName System.Windows.Forms
     $FileBrowser = New-Object System.Windows.Forms.OpenFileDialog
