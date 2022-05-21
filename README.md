@@ -58,7 +58,7 @@ From Terminal:
 
 Or start a session by running ```pwsh``` and then enter a dot followed by the full script path in quotes, for example:
 
-    ."/home/localuser/Downloads/01-CSV-to-EXPORT.ps1"
+    ."/home/localuser/Downloads/OpenSCAD_Bulk_Exporter.ps1"
 
 ## Command Line Parameters
 
