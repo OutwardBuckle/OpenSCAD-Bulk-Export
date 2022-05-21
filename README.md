@@ -11,6 +11,8 @@
 
 ## CSV Format
 
+The CSV file only requires one field (exported_filename), all other fields should relate to values in the .SCAD script. Any varibles that are not specified in the CSV will use the default values from the SCAD file.
+
 _Example .SCAD File:_
 
     message = "Some Text";
