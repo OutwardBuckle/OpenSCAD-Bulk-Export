@@ -65,7 +65,7 @@ Or start a session by running ```pwsh``` and then enter a dot followed by the fu
 * __file_extension__ - Extension of the output files. Valid options are: _STL_, _OFF_, _AMF_, _3MF_, _DXF_, _SVG_, _PNG_, _CSV_ or _JSON_
 * __csvPath__ - Path to the .SCAD file (Only required if exporting to/from .CSV)
 * __OutputFolder__ - Path to export the files (Must end with a forward slash on linux. Not required if exporting to .JSON or .CSV)
-* __cam_args__ - Camera arguments for PNG export (Only required if exporting to .CSV)
+* __cam_args__ - Camera arguments for PNG export (Only required if exporting to .PNG)
 * __overwriteFiles__ - Existing files will not be overwritten unless set to _true_. Valid options are: _$True_ or _$False_
 * __process_count__ - Number of exports to run at a time (Defaults to 3)
 
