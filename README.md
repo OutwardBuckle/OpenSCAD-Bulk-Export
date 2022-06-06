@@ -1,5 +1,11 @@
 # Bulk export via OpenSCAD command line & PowerShell (Windows & Linux)
 
+- [Script Functions](#script-functions)
+- [CSV Format](#csv-format)
+- [JSON Format](#json-format)
+- [Command Line Parameters](#command-line-parameters)
+- [How to run PowerShell scripts](#how-to-run-powershell-scripts)
+
 ## Script Functions
 
 | Name          | Description                                                                            |
@@ -36,6 +42,42 @@ _Example Output_
 
 ![image](https://user-images.githubusercontent.com/50000826/140439376-16148446-163c-4ac3-9986-237b54ac9945.png)
 
+## JSON Format
+
+The script uses the OpenSCAD customizer function to run the exports, so the JSON file matches the format of this - https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Customizer#Saving_Parameters_value_in_JSON_file
+
+This allows you to create/save many different configurations using the OpenSCAD customizer GUI, then easily export them all to your desired file format.
+
+_If you're exporting from CSV and you already have a JSON file with the same name as the chosen .SCAD file, it will be renamed with a timestamp at the start (OpenSCAD needs the JSON file to have the same filename as the .SCAD file, or it will export the files with default parameters)_
+
+More info on parameter sets, etc: https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Customizer
+
+## Command Line Parameters
+
+If you run the script without any parameters, you'll be prompted to enter the values, otherwise you can set them when calling the script:
+
+* __scadPath__ - Path to the .SCAD file
+* __inputType__ - Select an input type. Valid options are: _CSV_, _JSON_ or _SCAD_
+* __fileExtension__ - Extension of the output files. Valid options are: _STL_, _OFF_, _AMF_, _3MF_, _DXF_, _SVG_, _PNG_, _CSV_ or _JSON_
+* __csvPath__ - Path to the .SCAD file (Only required if exporting to/from .CSV)
+* __outputFolder__ - Path to export the files (Must end with a forward slash on linux. Not required if exporting to .JSON or .CSV)
+* __camArgs__ - Camera arguments for PNG export (Only required if exporting to .PNG)
+* __overwriteFiles__ - Existing files will not be overwritten unless set to _true_. Valid options are: _$True_ or _$False_
+* __processCount__ - Number of exports to run at a time (Defaults to 3. Must be using PowerShell V7 or later)
+
+### Examples:
+
+CSV TO JSON
+
+    .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -fileExtension JSON
+
+JSON TO EXPORT
+
+    .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType JSON -outputFolder 'Output' -fileExtension STL -overwriteFiles $True
+
+CSV TO JSON TO EXPORT
+
+    .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -outputFolder 'Output' -fileExtension STL
 
 ## How to run PowerShell scripts
 
@@ -47,53 +89,21 @@ Or
 
 Run it from command line:
 
-    .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -outputFolder 'Output' -file_extension STL
+    .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -outputFolder 'Output' -fileExtension STL
 
 ### On Linux:
 * [Install PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.2)
 
 From Terminal:
 
-    pwsh -file OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -outputFolder 'Output/' -file_extension STL
+    pwsh -file OpenSCAD_Bulk_Exporter.ps1
 
 Or start a session by running ```pwsh``` and then enter a dot followed by the full script path in quotes, for example:
 
-    ."/home/localuser/Downloads/OpenSCAD_Bulk_Exporter.ps1"
+    ."/home/localuser/Downloads/OpenSCAD_Bulk_Exporter.ps1" -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -outputFolder 'Output/' -fileExtension STL
 
-## Command Line Parameters
+### Note
 
-If you run the script without any parameters, you'll be prompted to enter the values, otherwise you can set them when calling the script:
-
-* __scadPath__ - Path to the .SCAD file
-* __inputType__ - Select an input type. Valid options are: _CSV_, _JSON_ or _SCAD_
-* __file_extension__ - Extension of the output files. Valid options are: _STL_, _OFF_, _AMF_, _3MF_, _DXF_, _SVG_, _PNG_, _CSV_ or _JSON_
-* __csvPath__ - Path to the .SCAD file (Only required if exporting to/from .CSV)
-* __OutputFolder__ - Path to export the files (Must end with a forward slash on linux. Not required if exporting to .JSON or .CSV)
-* __cam_args__ - Camera arguments for PNG export (Only required if exporting to .PNG)
-* __overwriteFiles__ - Existing files will not be overwritten unless set to _true_. Valid options are: _$True_ or _$False_
-* __process_count__ - Number of exports to run at a time (Defaults to 3)
-
-### Examples:
-
-CSV TO JSON
-
-    .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -file_extension JSON
-
-JSON TO EXPORT
-
-    .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType JSON -outputFolder 'Output' -file_extension STL -overwriteFiles $True
-
-CSV TO JSON TO EXPORT
-
-    .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -outputFolder 'Output' -file_extension STL
-
-## Notes
-
-* Windows 10 - PowerShell 5 is already installed on Windows 10, however if using linux or if you want to run multiple exports at the same time, you'll need to install PowerShell 7
-    * [Install on Windows](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.1#msi)
-    * [Install on Linux](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.2)
-* OpenSCAD needs the JSON file to have the same filename as the .SCAD file, or it will export the STLs with default parameters (e.g. File_Name.SCAD & File_Name.JSON)
-* If you already have a JSON file with the same name as the chosen .SCAD file, it will be renamed with a timestamp at the start
-* You can hard-code values at the top of each script file if you don't want to be prompted each time
-
-More info on parameter sets, etc: https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Customizer
+PowerShell 5 is already installed on Windows 10, however if using linux or if you want to run multiple exports in parallel, you'll need to install PowerShell 7
+* [Install on Windows](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.1#msi)
+* [Install on Linux](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.2)
