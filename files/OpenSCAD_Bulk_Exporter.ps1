@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param(
     [Parameter()]
     [string]$scadPath,
@@ -11,20 +11,20 @@ param(
 	[string]$csvPath,
 
     [Parameter()]
-    [string]$OutputFolder,
+    [string]$outputFolder,
 
     [Parameter()]
     [ValidateSet("STL", "OFF", "AMF", "3MF", "DXF", "SVG", "PNG", "CSV", "JSON")]
-    [string]$file_extension,
+    [string]$fileExtension,
 
     [Parameter()]
-    [string]$cam_args,
+    [string]$camArgs,
 
     [Parameter()]
     [bool]$overwriteFiles=$false,
     
     [Parameter()]
-    [int]$process_count
+    [int]$processCount
 )
 
 ############################################
@@ -74,7 +74,6 @@ function jsonExport($csv, $scad){
 
     if(Test-Path -Path $JsonPath){
         Write-Host ".JSON file already exists, creating backup..."
-        ######TODO###### /\ linux vs windows
         Copy-Item -Path $JsonPath -Destination ((Get-ItemProperty $scadPath).DirectoryName + '\' + (Get-Date -Format 'yyMMdd-hhmm') + '-' + [System.IO.Path]::GetFileNameWithoutExtension($scadPath) + ".json")
     }
 
@@ -131,7 +130,7 @@ function testFolderAndCreate($path){
 function promptForFileExtension($OSType){
     if($OSType){
     
-        $file_extension_list = @(
+        $fileExtension_list = @(
             "STL", "OFF", "AMF", "3MF", "DXF", "SVG", "PNG", "CSV", "JSON"
         )
 
@@ -140,7 +139,7 @@ function promptForFileExtension($OSType){
             Title      = 'Please select a export format and click OK'
         }
 
-        $file_ext = $file_extension_list | Sort-Object | Out-GridView @GridArguments | ForEach-Object {
+        $file_ext = $fileExtension_list | Sort-Object | Out-GridView @GridArguments | ForEach-Object {
             $_
         }
 
@@ -159,7 +158,7 @@ function promptForFileExtension($OSType){
 function promptForInputType($OSType){
     if($OSType){
     
-        $file_extension_list = @(
+        $fileExtension_list = @(
             "CSV", "JSON", "SCAD"
         )
 
@@ -168,7 +167,7 @@ function promptForInputType($OSType){
             Title      = 'Please select a input format and click OK'
         }
 
-        $file_ext = $file_extension_list | Sort-Object | Out-GridView @GridArguments | ForEach-Object {
+        $file_ext = $fileExtension_list | Sort-Object | Out-GridView @GridArguments | ForEach-Object {
             $_
         }
 
@@ -228,18 +227,15 @@ if ( !$PSBoundParameters.ContainsKey('inputType') ){
 
 ### Prompt for output extension if not set
 if ($inputType -ne "SCAD" -and (!$PSBoundParameters.ContainsKey('file_extension'))) {
-    $file_extension = promptForFileExtension -OSType $IsWin
+    $fileExtension = promptForFileExtension -OSType $IsWin
 }
 
 ##############################
-if ($file_extension -eq "JSON" ){
+if ($fileExtension -eq "JSON" ){
     $csvPath = fileCheck -prompt (!$PSBoundParameters.ContainsKey('csvPath')) -item $csvPath -name '.CSV file' -filter 'csv (*.csv)| *.csv' -OSType $IsWin
     jsonExport -csv $csvPath -scad $scadPath
 } elseif ($inputType -eq "SCAD") {
     
-    ######TODO######
-    # Check OpenSCAD version before proceeding??
-
     ### DO SCAD TO CSV EXPORT
     $csvPath = fileCheck -prompt (!$PSBoundParameters.ContainsKey('csvPath')) -item $csvPath -name '.CSV file' -filter 'csv (*.csv)| *.csv' -OSType $IsWin
 
@@ -296,12 +292,12 @@ if ($file_extension -eq "JSON" ){
     ##########################################################################################################################################
     ## Check/set/Set output folder
     if ( !$PSBoundParameters.ContainsKey('OutputFolder') ){
-        $OutputFolder = folderPrompt -OSType $IsWin
+        $outputFolder = folderPrompt -OSType $IsWin
     }
-    testFolderAndCreate -path $OutputFolder
+    testFolderAndCreate -path $outputFolder
 
     ##### CAMERA ARGUMENTS IF REQUIRED
-    If ($file_extension -eq "PNG" -and !$PSBoundParameters.ContainsKey('cam_args')){
+    If ($fileExtension -eq "PNG" -and !$PSBoundParameters.ContainsKey('cam_args')){
 
 Clear-Host
 Write-Host "Default Camera Settings
@@ -335,7 +331,7 @@ Example - Default camera position, View All, Auto-Center, Deep Ocean Color Schem
     
 "
 
-$cam_args = Read-Host -Prompt 'Input the camera arguments then press enter'
+$camArgs = Read-Host -Prompt 'Input the camera arguments then press enter'
 clear-host
 
 }
@@ -347,7 +343,7 @@ clear-host
 
         ### Set default process count if not set in args
         if ( !$PSBoundParameters.ContainsKey('process_count') ){
-            [int]$process_count = 3
+            [int]$processCount = 3
         }
 
         $importedJSON = Get-Content $jsonPath | convertfrom-json
@@ -357,17 +353,17 @@ clear-host
         $importedJSON[0].parameterSets | Get-Member -MemberType NoteProperty | ForEach-Object {
             $index += 1
             # Set the current file name to Parameter Set Name + .stl
-            $Output_Filename = $_.Name + '.' + $file_extension
+            $Output_Filename = $_.Name + '.' + $fileExtension
             # Set the Output Path
  
             if($IsWin){
-                if ($OutputFolder -match '\\$'){
-                    $OutputPath = $OutputFolder + $Output_Filename
+                if ($outputFolder -match '\\$'){
+                    $OutputPath = $outputFolder + $Output_Filename
                 } else {
-                    $OutputPath = $OutputFolder + '\' + $Output_Filename
+                    $OutputPath = $outputFolder + '\' + $Output_Filename
                 }
             } else {
-                $OutputPath = $OutputFolder + $Output_Filename
+                $OutputPath = $outputFolder + $Output_Filename
             }
 
 
@@ -376,8 +372,8 @@ clear-host
             if( $overwriteFiles -or -not(Test-Path -Path $OutputPath) ){
 
                 # Set the arguments
-                If ($file_extension -eq "PNG"){
-                    $arguments = '-o "' + $OutputPath + '" ' + $cam_args + ' -p "' + $jsonPath + '" -P "' + $_.Name + '" "' + $scadPath + '"'
+                If ($fileExtension -eq "PNG"){
+                    $arguments = '-o "' + $OutputPath + '" ' + $camArgs + ' -p "' + $jsonPath + '" -P "' + $_.Name + '" "' + $scadPath + '"'
                 } else {
                     $arguments = '-o "' + $OutputPath + '" -p "' + $jsonPath + '" -P "' + $_.Name + '" "' + $scadPath + '"'
                 }
@@ -401,7 +397,7 @@ clear-host
         # Create synced hashtable
         $sync = [System.Collections.Hashtable]::Synchronized($origin)
 
-        $job = $dataset | Foreach-Object -ThrottleLimit $process_count -AsJob -Parallel {
+        $job = $dataset | Foreach-Object -ThrottleLimit $processCount -AsJob -Parallel {
             $syncCopy = $using:sync
             $process = $syncCopy.$($PSItem.Id)
 
@@ -462,20 +458,20 @@ clear-host
                 $current_count += 1
 
                 # Set the current file name to Parameter Set Name + .stl
-                $Output_Filename = $_.Name + '.' + $file_extension
+                $Output_Filename = $_.Name + '.' + $fileExtension
                 # Set the Output Path
-                if ($OutputFolder -match '\\$'){
-                    $OutputPath = $OutputFolder + $Output_Filename
+                if ($outputFolder -match '\\$'){
+                    $OutputPath = $outputFolder + $Output_Filename
                 } else {
-                    $OutputPath = $OutputFolder + '\' + $Output_Filename
+                    $OutputPath = $outputFolder + '\' + $Output_Filename
                 }
 
                 ## Check if item exists, if not
                 if ($overwriteFiles -or -not(Test-Path -Path $OutputPath)) {
 
                     # Set the arguments
-                    If ($file_extension -eq "PNG"){
-                        $arguments = '-o "' + $OutputPath + '" ' + $cam_args + ' -p "' + $jsonPath + '" -P "' + $_.Name + '" "' + $scadPath + '"'
+                    If ($fileExtension -eq "PNG"){
+                        $arguments = '-o "' + $OutputPath + '" ' + $camArgs + ' -p "' + $jsonPath + '" -P "' + $_.Name + '" "' + $scadPath + '"'
                     } else {
                         $arguments = '-o "' + $OutputPath + '" -p "' + $jsonPath + '" -P "' + $_.Name + '" "' + $scadPath + '"'
                     }
@@ -509,6 +505,4 @@ clear-host
         }
 
     }
-
-    ##########################################################################################################################################
 }
