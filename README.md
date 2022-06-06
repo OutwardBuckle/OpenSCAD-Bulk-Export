@@ -59,10 +59,10 @@ If you run the script without any parameters, you'll be prompted to enter the va
 * __scadPath__ - Path to the .SCAD file
 * __inputType__ - Select an input type. Valid options are: _CSV_, _JSON_ or _SCAD_
 * __fileExtension__ - Extension of the output files. Valid options are: _STL_, _OFF_, _AMF_, _3MF_, _DXF_, _SVG_, _PNG_, _CSV_ or _JSON_
-* __csvPath__ - Path to the .SCAD file (Only required if exporting to/from .CSV)
+* __csvPath__ - Path to the .CSV file (Only required if exporting to/from .CSV)
 * __outputFolder__ - Path to export the files (Must end with a forward slash on linux. Not required if exporting to .JSON or .CSV)
 * __camArgs__ - Camera arguments for PNG export (Only required if exporting to .PNG)
-* __overwriteFiles__ - Existing files will not be overwritten unless set to _true_. Valid options are: _$True_ or _$False_
+* __overwriteFiles__ - Existing files will not be overwritten unless set to _true_. Valid options are: _True_ or _False_
 * __processCount__ - Number of exports to run at a time (Defaults to 3. Must be using PowerShell V7 or later)
 
 ### Examples:
@@ -75,7 +75,7 @@ JSON TO EXPORT
 
     .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType JSON -outputFolder 'Output' -fileExtension STL -overwriteFiles $True
 
-CSV TO JSON TO EXPORT
+CSV TO EXPORT
 
     .\OpenSCAD_Bulk_Exporter.ps1 -scadPath Example.scad -inputType CSV -csvPath Example_CSV.csv -outputFolder 'Output' -fileExtension STL
 
