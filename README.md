@@ -1,9 +1,9 @@
 # Bulk export via OpenSCAD command line & PowerShell (Windows & Linux)
 
 - [Script Functions](#script-functions)
+- [Command Line Parameters](#command-line-parameters)
 - [CSV Format](#csv-format)
 - [JSON Format](#json-format)
-- [Command Line Parameters](#command-line-parameters)
 - [How to run PowerShell scripts](#how-to-run-powershell-scripts)
 
 ## Script Functions
@@ -14,6 +14,19 @@
 | CSV to JSON   | Create a customizer parameter set JSON file from a CSV file                            |
 | JSON to EXPORT| Export all parameter sets from a JSON file                                             |
 | SCAD to CSV   | Generate a CSV from a SCAD file (currently requires the latest dev build of OpenSCAD)  |
+
+## Command Line Parameters
+
+If you run the script without any parameters, you'll be prompted to enter the values, otherwise you can set them when calling the script:
+
+* __scadPath__ - Path to the .SCAD file
+* __inputType__ - Select an input type. Valid options are: _CSV_, _JSON_ or _SCAD_
+* __fileExtension__ - Extension of the output files. Valid options are: _STL_, _OFF_, _AMF_, _3MF_, _DXF_, _SVG_, _PNG_, _CSV_ or _JSON_
+* __csvPath__ - Path to the .CSV file (Only required if exporting to/from .CSV)
+* __outputFolder__ - Path to export the files (Must end with a forward slash on linux. Not required if exporting to .JSON or .CSV)
+* __camArgs__ - Camera arguments for PNG export (Only required if exporting to .PNG)
+* __overwriteFiles__ - Existing files will not be overwritten unless set to _true_. Valid options are: _True_ or _False_
+* __processCount__ - Number of exports to run at a time (Defaults to 3. Must be using PowerShell V7 or later)
 
 ## CSV Format
 
@@ -51,19 +64,6 @@ This allows you to create/save many different configurations using the OpenSCAD 
 _If you're exporting from CSV and you already have a JSON file with the same name as the chosen .SCAD file, it will be renamed with a timestamp at the start (OpenSCAD needs the JSON file to have the same filename as the .SCAD file, or it will export the files with default parameters)_
 
 More info on parameter sets, etc: https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Customizer
-
-## Command Line Parameters
-
-If you run the script without any parameters, you'll be prompted to enter the values, otherwise you can set them when calling the script:
-
-* __scadPath__ - Path to the .SCAD file
-* __inputType__ - Select an input type. Valid options are: _CSV_, _JSON_ or _SCAD_
-* __fileExtension__ - Extension of the output files. Valid options are: _STL_, _OFF_, _AMF_, _3MF_, _DXF_, _SVG_, _PNG_, _CSV_ or _JSON_
-* __csvPath__ - Path to the .CSV file (Only required if exporting to/from .CSV)
-* __outputFolder__ - Path to export the files (Must end with a forward slash on linux. Not required if exporting to .JSON or .CSV)
-* __camArgs__ - Camera arguments for PNG export (Only required if exporting to .PNG)
-* __overwriteFiles__ - Existing files will not be overwritten unless set to _true_. Valid options are: _True_ or _False_
-* __processCount__ - Number of exports to run at a time (Defaults to 3. Must be using PowerShell V7 or later)
 
 ### Examples:
 
